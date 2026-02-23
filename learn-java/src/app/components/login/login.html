@@ -1,0 +1,22 @@
+<div class="login-container">
+    <div class="login-card">
+        <h2>Admin Access</h2>
+        <p>Please enter the administrator password to manage modules.</p>
+
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="Enter password"
+                    required>
+            </div>
+
+            <div *ngIf="errorMessage()" class="error-msg">
+                {{ errorMessage() }}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+
+        <p class="hint">Hint: try <code>admin123</code></p>
+    </div>
+</div>

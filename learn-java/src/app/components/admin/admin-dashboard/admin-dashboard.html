@@ -1,0 +1,37 @@
+<div class="admin-header">
+    <div class="header-left">
+        <h1>Admin Dashboard</h1>
+        <p>Manage your learning modules.</p>
+    </div>
+    <div class="header-actions">
+        <a routerLink="/admin/new" class="btn btn-primary">+ Add New Topic</a>
+        <button (click)="onLogout()" class="btn btn-secondary">Logout</button>
+    </div>
+</div>
+
+<div class="admin-content">
+    <table class="topics-table">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Title</th>
+                <th>Last Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let topic of topics()">
+                <td><span class="topic-type" [class]="topic.type">{{ topic.type }}</span></td>
+                <td>{{ topic.title }}</td>
+                <td>{{ topic.createdAt | date:'short' }}</td>
+                <td class="table-actions">
+                    <a [routerLink]="['/admin/edit', topic.id]" class="btn btn-sm btn-secondary">Edit</a>
+                    <button (click)="onDelete(topic.id)" class="btn btn-sm btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="topics().length === 0">
+                <td colspan="4" class="empty-state">No topics found. Create your first module!</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

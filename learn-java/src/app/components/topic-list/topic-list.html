@@ -1,0 +1,37 @@
+<div class="hero">
+    <div class="hero-content">
+        <h1>Master <span>Java</span> & <span>Git</span></h1>
+        <p>Interactive lessons for modern developers. Deep dive into collections, streams, and deployment workflows.</p>
+        <div class="hero-stats">
+            <span class="stat"><b>10+</b> Modules</span>
+            <span class="stat"><b>5m</b> Reading</span>
+            <span class="stat"><b>100%</b> Free</span>
+        </div>
+    </div>
+</div>
+
+<div class="topic-list-header">
+    <div class="search-container">
+        <input type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)"
+            placeholder="Search for topics (e.g. 'streams', 'java')..." class="search-input">
+    </div>
+</div>
+
+<div class="topics-grid">
+    <div *ngFor="let topic of filteredTopics()" class="topic-card" [routerLink]="['/topic', topic.id]">
+        <h3>{{ topic.title }}</h3>
+
+        <!-- Get the first theory block for the snippet if it exists -->
+        <p *ngIf="topic.sections?.[0]?.blocks?.[0]?.value">
+            {{ topic.sections?.[0]?.blocks?.[0]?.value | slice:0:120 }}...
+        </p>
+
+        <div class="card-footer">
+            <span>Start Learning &rarr;</span>
+        </div>
+    </div>
+
+    <div *ngIf="filteredTopics().length === 0" class="no-results">
+        <p>No topics match your search. Try another term!</p>
+    </div>
+</div>

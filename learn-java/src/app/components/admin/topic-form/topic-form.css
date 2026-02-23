@@ -1,0 +1,201 @@
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.topic-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.main-title {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.85rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all var(--transition);
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-secondary-light);
+}
+
+.code-font {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    background: #fdf6f6;
+    color: #c2185b;
+}
+
+/* Section Blocks */
+.section-block {
+    padding: 2rem;
+    background: #fff;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.section-header h3 {
+    margin: 0;
+    color: var(--color-primary);
+    font-size: 1.25rem;
+}
+
+/* Block Items */
+.block-item {
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #eee;
+}
+
+.block-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.block-type-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    background: #ddd;
+    color: #666;
+}
+
+.block-type-badge.theory {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.block-type-badge.code {
+    background: #fce4ec;
+    color: #c2185b;
+}
+
+.block-type-badge.command {
+    background: #eee;
+    color: #333;
+}
+
+.block-type-badge.output {
+    background: #333;
+    color: #fff;
+}
+
+.block-actions {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.btn-icon {
+    background: #fff;
+    border: 1px solid #ddd;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-icon:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.btn-icon.delete {
+    color: #f44336;
+}
+
+.btn-icon:hover:not(:disabled) {
+    border-color: var(--color-primary);
+}
+
+.block-add-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fdfdfd;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px dashed #ddd;
+}
+
+.block-add-actions span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #999;
+}
+
+.btn-xs {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #f0f0f0;
+}
+
+.btn-lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-block {
+    width: 100%;
+}

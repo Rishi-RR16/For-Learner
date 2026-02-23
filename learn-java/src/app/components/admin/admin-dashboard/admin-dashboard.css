@@ -1,0 +1,73 @@
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.topics-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.topics-table th {
+    text-align: left;
+    background: var(--color-secondary-light);
+    padding: 1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.topics-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.topic-type {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.topic-type.java {
+    background: #fce4ec;
+    color: #c2185b;
+}
+
+.topic-type.git {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-danger {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+    color: white;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}

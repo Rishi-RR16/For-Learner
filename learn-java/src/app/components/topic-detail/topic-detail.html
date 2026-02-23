@@ -1,0 +1,53 @@
+<div *ngIf="topic; else notFound" class="topic-detail-container">
+    <div class="breadcrumb">
+        <a routerLink="/topics">&larr; Back to Topics</a>
+    </div>
+
+    <header class="topic-header">
+        <h1>{{ topic.title }}</h1>
+    </header>
+
+    <div class="topic-sections">
+        <div *ngFor="let section of topic.sections; let i = index" class="section-container">
+            <h3 *ngIf="topic.sections.length > 1" class="section-indicator">Module {{ i + 1 }}</h3>
+
+            <div *ngFor="let block of section.blocks; let j = index" class="block-render">
+
+                <section *ngIf="block.type === 'theory'" class="theory-block">
+                    <p>{{ block.value }}</p>
+                </section>
+
+                <section *ngIf="block.type === 'command'" class="command-block">
+                    <div class="command-header">Terminal</div>
+                    <code>{{ block.value }}</code>
+                </section>
+
+                <section *ngIf="block.type === 'code'" class="code-block">
+                    <div class="code-header">
+                        <span>Source Code</span>
+                        <button (click)="copyToClipboard(block.value, i, j)" class="btn btn-xs btn-secondary">
+                            {{ copyFeedback()?.sectionIndex === i && copyFeedback()?.blockIndex === j ? 'Copied!' :
+                            'Copy' }}
+                        </button>
+                    </div>
+                    <div class="code-wrapper">
+                        <pre><code class="language-java">{{ block.value }}</code></pre>
+                    </div>
+                </section>
+
+                <section *ngIf="block.type === 'output'" class="output-block">
+                    <div class="output-header">Execution Result</div>
+                    <pre><code>{{ block.value }}</code></pre>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #notFound>
+    <div class="not-found">
+        <h2>Topic not found</h2>
+        <a routerLink="/topics" class="btn btn-primary">Back to Topics</a>
+    </div>
+</ng-template>

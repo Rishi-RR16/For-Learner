@@ -1,0 +1,78 @@
+<div class="form-container">
+    <div class="form-header">
+        <h1>{{ isEditMode ? 'Edit Topic' : 'Add New Topic' }}</h1>
+        <a routerLink="/admin" class="btn btn-secondary">Cancel</a>
+    </div>
+
+    <form [formGroup]="topicForm" (ngSubmit)="onSubmit()" class="topic-form">
+        <div class="form-group main-title">
+            <label for="title">Topic Title</label>
+            <input type="text" id="title" formControlName="title" placeholder="e.g. Java Streams Deep Dive">
+        </div>
+
+        <div formArrayName="sections" class="sections-container">
+            <div *ngFor="let section of sections.controls; let i = index" [formGroupName]="i" class="section-block">
+                <div class="section-header">
+                    <h3>Module {{ i + 1 }}</h3>
+                    <button type="button" (click)="removeSection(i)" class="btn btn-sm btn-outline-danger"
+                        *ngIf="sections.length > 1">
+                        Remove Module
+                    </button>
+                </div>
+
+                <div formArrayName="blocks" class="blocks-container">
+                    <div *ngFor="let block of getBlocks(i).controls; let j = index" [formGroupName]="j"
+                        class="block-item">
+                        <div class="block-controls">
+                            <div class="block-type-badge" [class]="block.get('type')?.value">
+                                {{ block.get('type')?.value }}
+                            </div>
+                            <div class="block-actions">
+                                <button type="button" (click)="moveBlock(i, j, 'up')" [disabled]="j === 0"
+                                    class="btn-icon">↑</button>
+                                <button type="button" (click)="moveBlock(i, j, 'down')"
+                                    [disabled]="j === getBlocks(i).length - 1" class="btn-icon">↓</button>
+                                <button type="button" (click)="removeBlock(i, j)" class="btn-icon delete"
+                                    *ngIf="getBlocks(i).length > 1">×</button>
+                            </div>
+                        </div>
+
+                        <div class="block-content">
+                            <textarea *ngIf="block.get('type')?.value !== 'command'" formControlName="value"
+                                [rows]="block.get('type')?.value === 'theory' ? 4 : 6"
+                                [class.code-font]="block.get('type')?.value !== 'theory'"
+                                placeholder="Enter content here..."></textarea>
+
+                            <input *ngIf="block.get('type')?.value === 'command'" type="text" formControlName="value"
+                                class="code-font" placeholder="Enter command here...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block-add-actions">
+                    <span>Add Block:</span>
+                    <button type="button" (click)='addBlock(i, "theory")' class="btn btn-xs btn-outline-primary">+
+                        Theory</button>
+                    <button type="button" (click)='addBlock(i, "command")' class="btn btn-xs btn-outline-primary">+
+                        Command</button>
+                    <button type="button" (click)='addBlock(i, "code")' class="btn btn-xs btn-outline-primary">+
+                        Code</button>
+                    <button type="button" (click)='addBlock(i, "output")' class="btn btn-xs btn-outline-primary">+
+                        Output</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-section-action">
+            <button type="button" (click)="addSection()" class="btn btn-secondary btn-block">
+                + Add Another Module
+            </button>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="topicForm.invalid">
+                {{ isEditMode ? 'Update Topic' : 'Create Topic' }}
+            </button>
+        </div>
+    </form>
+</div>
