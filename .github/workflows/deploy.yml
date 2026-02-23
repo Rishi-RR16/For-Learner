@@ -8,6 +8,10 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    # This tells GitHub to run commands inside your subfolder
+    defaults:
+      run:
+        working-directory: YOUR-SUBFOLDER-NAME 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -20,5 +24,5 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/for-learner  # Most Angular projects use lowercase for the dist folder
+          folder: YOUR-SUBFOLDER-NAME/dist/for-learner
           branch: gh-pages
