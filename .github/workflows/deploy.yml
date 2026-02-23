@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: Learn-Java  # <--- Change this to your folder name
+        working-directory: learn-java  # Fixed: lowercase to match your folder
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -23,5 +23,5 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: Learn-Java/dist/for-learner # <--- Change this folder name too
+          folder: learn-java/dist/learn-java # Usually Angular builds into a folder named after the project
           branch: gh-pages
