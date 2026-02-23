@@ -8,10 +8,9 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    # This tells GitHub to run commands inside your subfolder
     defaults:
       run:
-        working-directory: YOUR-SUBFOLDER-NAME 
+        working-directory: Learn-Java  # <--- Change this to your folder name
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -24,5 +23,5 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: YOUR-SUBFOLDER-NAME/dist/for-learner
+          folder: Learn-Java/dist/for-learner # <--- Change this folder name too
           branch: gh-pages
